@@ -89,13 +89,18 @@ jmeter -n -t test-plans/FakeStoreAPI_Perf_LoadTest.jmx        -l loadtest_result
 
 ---
 
-## 📊 **Sample Key Metrics**
+**## 📊 Load Test (Approx. 150 Virtual Users)
 
-| Journey / Sampler | Avg (ms) | p90 | p95 | Throughput | Error % |
-|-------------------|----------|-----|-----|------------|---------|
-| J1 — List Products | 280 | 420 | 520 | xxx/sec | 0.00% |
-| J2 — Login | 350 | 500 | 620 | xxx/sec | 0.00% |
-| J3 — Add to Cart | 480 | 780 | 920 | xxx/sec | 1.20% |
+- Total samples: ~54,470  
+- Overall error rate: **0.0018%** (1 failed request)  
+- Overall p95: **~232 ms**, p99: **~260 ms**  
+- Throughput: **~112.7 requests/sec**
+
+**Endpoint highlights:**
+- Browsing (`/products`, `/products/{id}`, `/products/categories`) maintained p95 under **~200–250 ms**.
+- Auth flows (`/auth/login`, `/carts/user/{id}`) maintained p95 under **~260–310 ms**.
+- Write operation (`POST /carts`) stayed performant with p95 under **~170–230 ms**.
+**
 
 ---
 
